@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react'
+import '@/styles/components/Card.scss'
 
 type CardProps = {
   id: number;
@@ -13,9 +14,11 @@ type CardProps = {
 
 export const Card = ({id,name,description,price,slug, ItemDetail}:CardProps) => {
   return (
-    <div>
-      <Image alt={name} layout="fill" src={`${process.env.NEXT_PUBLIC_IMAGE_HOST}/birria.jpeg`}  />
+    <div className="card">
       <div>
+      <Image alt={name} layout="fill" src={`${process.env.NEXT_PUBLIC_IMAGE_HOST}/birria.jpeg`}  />
+      </div>
+      <div className="details">
         <h3>{name}</h3>
         <p>{description}</p>
         <p>{price}</p>

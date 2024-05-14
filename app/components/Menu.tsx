@@ -12,12 +12,10 @@ type MenuProps = {
 
 const Menu = ({items}: MenuProps) => {
   const [selectedCategory, setSelectedCategory] = useState(0)
-  console.log(items)
 
   return (
     <>
       <CategoryBar categories={items.map((item) => item.name)} setSelectedCategory={setSelectedCategory} selectedCategory={selectedCategory} />
-      <ul>Elements go here</ul>
       <Grid>
         {items[selectedCategory].MenuItem.map((item) => {
           return (
