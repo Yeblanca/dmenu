@@ -6,6 +6,8 @@ Dotenv setup.
 
 Add DB Chain.
 
+Modify next.config.mjs (?) Images
+
 Run the development server:
 
 ```bash
