@@ -1,0 +1,21 @@
+/* styles/styles.scss */
+$primary-color: #FA9206;
+$secondary-color: #F9AF05;
+$white: #FFFFFF;
+$gray: #E5E8E5;
+$black: #191919;
+$dark-gray:#838383;
+
+.flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.w-100{
+  width: 100%;
+}
+
+body {
+  background-color: $primary-color;
+}
