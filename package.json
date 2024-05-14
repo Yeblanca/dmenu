@@ -10,6 +10,7 @@
     "db:pull": "dotenv -e .env.local -- npx prisma db pull"
   },
   "dependencies": {
+    "@prisma/client": "^5.14.0",
     "next": "14.2.3",
     "prisma": "^5.14.0",
     "react": "^18",
