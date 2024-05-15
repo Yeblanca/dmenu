@@ -8,6 +8,40 @@ export type itemsByCategory = {
   MenuItem: MenuItem[];
 }
 
+export const getMenuItemsByName = async (name: string) => {
+    return await prisma.menuItem.findMany({
+    where: {
+      name: {
+        contains: name,
+        mode: 'insensitive', // This makes the search case-insensitive
+      },
+      },
+      orderBy: {
+        id: 'asc',
+      }
+  });
+}
+
+export const getItems = async () => {
+  return await prisma.menuItem.findMany({
+    where: {
+      restaurantId:1
+    },
+    select: {
+      id: true,
+      name: true,
+      description: true,
+      price: true,
+      slug: true,
+      ItemDetail: {
+        select: {
+          type: true,
+          url: true,
+        },
+      },
+    },
+  });
+}
 
 export const getItemsByCategory = async () => {
   return await prisma.menuCategory.findMany({

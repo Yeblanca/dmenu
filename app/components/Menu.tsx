@@ -1,9 +1,12 @@
 'use client'
-import React, { useState } from 'react'
-import { itemsByCategory } from '../lib/items'
+import React, { useEffect, useState } from 'react'
+import { getItems, getMenuItemsByName, itemsByCategory } from '../lib/items'
 import { CategoryBar } from './CategoryBar'
 import { Grid } from './Grid'
 import { Card } from './Card'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '@/state/store'
+import { receiveProducts } from '@/state/productsSlice'
 
 
 type MenuProps = {
@@ -12,6 +15,19 @@ type MenuProps = {
 
 const Menu = ({items}: MenuProps) => {
   const [selectedCategory, setSelectedCategory] = useState(0)
+  const dispatch = useDispatch<AppDispatch>()
+
+  useEffect(() => {
+    // Load products into the store
+    (async () => {
+      // Load products into the store
+      const res = await fetch('/api/items');
+      const products = await res.json();
+      console.log('Products loaded into store:', products)
+      dispatch(receiveProducts(products))
+    })()
+  }, [dispatch])
+
 
   return (
     <>
