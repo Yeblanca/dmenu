@@ -23,7 +23,6 @@ const Menu = ({items}: MenuProps) => {
       // Load products into the store
       const res = await fetch('/api/items');
       const products = await res.json();
-      console.log('Products loaded into store:', products)
       dispatch(receiveProducts(products))
     })()
   }, [dispatch])

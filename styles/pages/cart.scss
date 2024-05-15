@@ -1,0 +1,36 @@
+.cart-header{
+  width: 100%;
+  background-color: #ccc;
+  min-height: 3rem;
+}
+
+.cart-content{
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table{
+  th{
+    font-weight: bold;
+    text-align: left;
+    padding: 1rem;
+  };
+  td{
+    padding: 1rem;
+  }
+}
+
+.cart-summary{
+  margin-left: 1rem;
+  padding: 1rem;
+}
+
+.cart-summary-card{
+  border: 1px solid #ccc;
+  padding: 1rem;
+}

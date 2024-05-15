@@ -6,13 +6,7 @@ import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/state/store';
 import { addToCart } from '@/state/cartSlice';
-
-const formatPrice = (price: number) => {
-  return `$${price.toLocaleString('en', {
-    useGrouping: false,
-    minimumFractionDigits: 2,
-  })}`;
-};
+import { formatPrice } from '../lib/utils';
 
 
 type item = {
