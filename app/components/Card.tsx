@@ -15,7 +15,7 @@ type CardProps = {
 export const Card = ({id,name,description,price,slug, ItemDetail}:CardProps) => {
   return (
     <div className="card">
-      <div>
+      <div className="image">
       <Image alt={name} layout="fill" src={`${process.env.NEXT_PUBLIC_IMAGE_HOST}/birria.jpeg`}  />
       </div>
       <div className="details">

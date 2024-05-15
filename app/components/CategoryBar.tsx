@@ -8,7 +8,7 @@ type CategoryBarProps = {
 
 export const CategoryBar = ({categories, setSelectedCategory, selectedCategory}:CategoryBarProps) => {
   return (
-    <div>{categories.map((element, index) => {
+    <div className="menu-bar">{categories.map((element, index) => {
       return (<a key={index}>{ element }</a>)
     })}</div>
   )

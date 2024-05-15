@@ -4,5 +4,13 @@ flex-direction: column;
 justify-content: space-between;
 transition: all 0.3s ease-in-out;
 padding: 1.5rem;
-background-color: white
+background-color: white;
+border: 1px solid #e0e0e0;
+min-width: 19rem;
 }
+
+.image{
+position: relative;
+min-height: 18rem;
+}
+

@@ -6,6 +6,6 @@ type GridProps = {
 
 export const Grid = ({children}:GridProps) => {
   return (
-    <div>{children}</div>
+    <div className="grid">{children}</div>
   )
 }

@@ -9,11 +9,9 @@ export default async function Home() {
 
   return (<>
     <header className="header">
-      <div><Image alt="Restaurant logo" src={logo} /></div>
+      <div><Image alt="Restaurant logo" layout="fill" src={logo} /></div>
     </header>
     <main>
-      <h1>Welcome to our restaurant!</h1>
-      <p>Enjoy our delicious food and drinks!</p>
       <Suspense fallback={<div>Loading...</div>} >
         <Menu items={items} />
       </Suspense>
