@@ -1,7 +1,11 @@
+'use client';
 import Image from 'next/image';
 import React from 'react'
 import '@/styles/components/Card.scss'
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/state/store';
+import { addToCart } from '@/state/cartSlice';
 
 const formatPrice = (price: number) => {
   return `$${price.toLocaleString('en', {
@@ -11,7 +15,7 @@ const formatPrice = (price: number) => {
 };
 
 
-type CardProps = {
+type item = {
   id: number;
   name: string;
   description: string;
@@ -20,7 +24,11 @@ type CardProps = {
   ItemDetail: {type:string, url:string}[]
 }
 
-export const Card = ({id,name,description,price,slug, ItemDetail}:CardProps) => {
+export const Card = ({ id, name, description, price, slug, ItemDetail }: item) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const handleClick = () => {
+    dispatch(addToCart({ id, name, description, price, slug, ItemDetail }))
+  }
   return (
     <div className="card">
       <div className="image">
@@ -31,7 +39,7 @@ export const Card = ({id,name,description,price,slug, ItemDetail}:CardProps) => 
         <p>{description}</p>
         <div className="action-row">
         <h2>{formatPrice(price)}</h2>
-        <button>Add to cart</button>
+        <button onClick={handleClick}>Add to cart</button>
         </div>
       </div>
     </div>

@@ -6,8 +6,8 @@ type InitialState = {
 }
 
 type CartState = {
-    items: Array<{ product: { id: string }, quantity: number }>
-  }
+  items: Array<{ product: { id: string, name: string, price: number, slug: string }, quantity: number }>
+}
 
 const initialState = {
   value: {
