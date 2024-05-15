@@ -7,9 +7,10 @@ type CategoryBarProps = {
 }
 
 export const CategoryBar = ({categories, setSelectedCategory, selectedCategory}:CategoryBarProps) => {
+
   return (
-    <div className="menu-bar">{categories.map((element, index) => {
-      return (<a key={index}>{ element }</a>)
+    <div className="scrollmenu">{categories.map((element, index) => {
+      return (<a className={selectedCategory===index ? 'active' : ''} onClick={()=>setSelectedCategory(index)} key={index}>{ element }</a>)
     })}</div>
   )
 }

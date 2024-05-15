@@ -16,13 +16,16 @@ const Menu = ({items}: MenuProps) => {
   return (
     <>
       <CategoryBar categories={items.map((item) => item.name)} setSelectedCategory={setSelectedCategory} selectedCategory={selectedCategory} />
-      <Grid>
+      <div className="content">
+        {items[selectedCategory].MenuItem.length === 0 ? (<div>We are sorry, no items were found</div>) : (      <Grid>
         {items[selectedCategory].MenuItem.map((item) => {
           return (
             <Card key={item.id} {...item} />
           )
         })}
-      </Grid>
+      </Grid>)}
+
+      </div>
     </>
   )
 }

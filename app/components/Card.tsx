@@ -21,8 +21,10 @@ export const Card = ({id,name,description,price,slug, ItemDetail}:CardProps) => 
       <div className="details">
         <h3>{name}</h3>
         <p>{description}</p>
+        <div>
         <p>{price}</p>
         <button>Add to cart</button>
+        </div>
       </div>
     </div>
   )
