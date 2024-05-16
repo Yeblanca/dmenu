@@ -6,11 +6,12 @@ type ItemLayoutProps = {
   children: React.ReactNode;
 };
 
-export const ItemLayout = ({children}: ItemLayoutProps) => {
+const ItemLayout = ({children}: ItemLayoutProps) => {
   return (
     <div>
       <NavHeader/>
-      {children}</div>
+      {children}
+    </div>
   )
 }
 
