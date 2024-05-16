@@ -14,6 +14,11 @@
   margin-right: auto;
 }
 
+.cart-table{
+  background: white;
+  padding: 1rem;
+}
+
 table{
   th{
     font-weight: bold;
@@ -33,6 +38,7 @@ table{
 .cart-summary-card{
   border: 1px solid #ccc;
   padding: 1rem;
+  background-color: white;
   & > h3, p{
     padding: 1rem;
   }

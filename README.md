@@ -2,11 +2,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-Dotenv setup.
+-Add DB Chain.
 
-Add DB Chain.
+-Add Public Image Host.
 
-Modify next.config.mjs (?) Images
+-Install dependencies.
+
+-Run npx prisma generate:
 
 Run the development server:
 
