@@ -24,7 +24,6 @@ const CartPage = () => {
   return (
     <div className="cart-main">
 
-      <div className="cart-header">Taquería La Progreso</div>
       <div className="cart-content">
       {(productsInCart.length === 0) ? ( <div>Your cart is empty, add some items!</div>) : (<>        <div className="cart-table">
           <h1>Your shopping cart:</h1>

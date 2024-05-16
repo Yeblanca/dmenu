@@ -32,7 +32,8 @@ const ItemDetailsPage = async ({ params }: ItemDetailsPageProps) => {
       <div className="image-container">
               <div className="image">
 
-      {item.ItemDetail.length > 0 ? <Image
+          {item.ItemDetail.length > 0 ? <Image
+            style={{ objectFit: "cover" }}
             src={`${process.env.NEXT_PUBLIC_IMAGE_HOST}/${item.ItemDetail[0].url}`}
             alt={item.name}
             layout="fill"

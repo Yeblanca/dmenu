@@ -1,0 +1,25 @@
+header{
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  align-items: flex-end;
+  a{
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+
+  }
+}
+
+
+.img-container{
+  position: relative;
+  min-height: 5rem;
+  width: 10rem;
+
+  background-color: black;
+}
+
+.img{
+  object-fit: cover;
+}
