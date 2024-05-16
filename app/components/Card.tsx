@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/state/store';
 import { addToCart } from '@/state/cartSlice';
 import { formatPrice } from '../lib/utils';
+import { Button } from './Button';
 
 
 type item = {
@@ -39,8 +40,9 @@ export const Card = ({ id, name, description, price, slug, ItemDetail }: item) =
         <Link href={`/items/${slug}`}><h3>{name}</h3></Link>
         <p>{description}</p>
         <div className="action-row">
-        <h2>{formatPrice(price)}</h2>
-        <button onClick={handleClick}>Add to cart</button>
+          <h2>{formatPrice(price)}</h2>
+          <Button title="Add to cart" item={{ id, name, description, price, slug, ItemDetail }} />
+        {/* <button onClick={handleClick}>Add to cart</button> */}
         </div>
       </div>
     </div>

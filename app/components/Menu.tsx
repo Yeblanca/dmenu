@@ -1,12 +1,13 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { itemsByCategory } from '../lib/items'
+import { MenuItem, itemsByCategory } from '../lib/items'
 import { CategoryBar } from './CategoryBar'
 import { Grid } from './Grid'
 import { Card } from './Card'
 import { useDispatch } from 'react-redux'
 import { AppDispatch, useAppSelector } from '@/state/store'
 import { receiveProducts } from '@/state/productsSlice'
+
 
 
 type MenuProps = {
@@ -18,9 +19,10 @@ const Menu = ({ items }: MenuProps) => {
   const [selectedCategory, setSelectedCategory] = useState(0)
   const [query, setQuery] = useState('');
   const dispatch = useDispatch<AppDispatch>()
-  const allItems: itemsByCategory[] = useAppSelector((state) => state.products.value.products) // Add type annotation to allItems array
+  const allItems: MenuItem[]= useAppSelector((state) => state.products.value.products) // Add type annotation to allItems array
 
   const filteredItems = allItems.filter((item) => item.name.toLowerCase().includes(query.toLowerCase()));
+  console.log(filteredItems)
 
   useEffect(() => {
     // Load products into the store

@@ -38,3 +38,18 @@
   width: 19rem;
 }
 
+@media only screen and (max-width: 600px) {
+  .main{
+    flex-direction: column-reverse;
+    overflow: hidden;
+  }
+
+  .image-container{
+    margin-bottom: 1rem;
+  }
+
+  .details{
+    width: 90%;
+  }
+
+}

@@ -1,3 +1,4 @@
+import { Button } from '@/app/components/Button';
 import { getItemByslug } from '@/app/lib/items';
 import { formatPrice } from '@/app/lib/utils';
 import Image from 'next/image';
@@ -22,7 +23,7 @@ const ItemDetailsPage = async ({ params }: ItemDetailsPageProps) => {
       <section className="details">
         <h1>{item.name}</h1>
         <p className="price">{formatPrice(item.price)}</p>
-        <button>Add to cart</button>
+        <Button title="Add to cart" item={item} />
         <div className="description">
           <h5>Details</h5>
         <hr/>

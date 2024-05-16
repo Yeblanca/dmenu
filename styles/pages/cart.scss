@@ -33,4 +33,20 @@ table{
 .cart-summary-card{
   border: 1px solid #ccc;
   padding: 1rem;
+  & > h3, p{
+    padding: 1rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+.cart-content{
+  flex-direction: column;
+}
+.cart-table{
+  overflow: scroll;
+}
+.cart-summary-card{
+  text-align: center;
+}
+
 }
