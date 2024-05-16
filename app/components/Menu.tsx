@@ -15,14 +15,12 @@ type MenuProps = {
 }
 
 const Menu = ({ items }: MenuProps) => {
-  // console.log(items)
   const [selectedCategory, setSelectedCategory] = useState(0)
   const [query, setQuery] = useState('');
   const dispatch = useDispatch<AppDispatch>()
   const allItems: MenuItem[]= useAppSelector((state) => state.products.value.products) // Add type annotation to allItems array
 
   const filteredItems = allItems.filter((item) => item.name.toLowerCase().includes(query.toLowerCase()));
-  console.log(filteredItems)
 
   useEffect(() => {
     // Load products into the store

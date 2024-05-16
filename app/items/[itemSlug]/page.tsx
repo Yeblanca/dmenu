@@ -12,12 +12,10 @@ type ItemDetailsPageProps = {
 };
 
 const ItemDetailsPage = async ({ params }: ItemDetailsPageProps) => {
-  console.log(params.itemSlug)
   const item = await getItemByslug(params.itemSlug);
   if(!item) {
     notFound();
   }
-  // console.log('this is the item',item)
   return (
     <div className="main">
       <section className="details">
