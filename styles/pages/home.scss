@@ -21,6 +21,7 @@
 div.scrollmenu{
   overflow: auto;
   white-space: nowrap;
+  background-color: white;
   &::-webkit-scrollbar{
     display: none;
   }
