@@ -1,0 +1,40 @@
+
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  h1{
+    font-size: 2rem;
+    // margin-bottom: 1rem;
+  }
+
+  p.price{
+    text-align: right;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+
+  }
+
+  button{
+    width: 100%;
+  }
+}
+
+.details{
+  margin: 1rem;
+}
+
+.description{
+  border: 1px solid #ccc;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.image-container{
+  position: relative;
+  height: 20rem;
+  width: 19rem;
+}
+

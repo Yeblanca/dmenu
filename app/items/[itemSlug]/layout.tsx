@@ -1,3 +1,5 @@
+import { NavHeader } from '@/app/components/NavHeader';
+import Link from 'next/link';
 import React from 'react'
 
 type ItemLayoutProps = {
@@ -6,7 +8,9 @@ type ItemLayoutProps = {
 
 export const ItemLayout = ({children}: ItemLayoutProps) => {
   return (
-    <div>{children}</div>
+    <div>
+      <NavHeader/>
+      {children}</div>
   )
 }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavHeader } from '../components/NavHeader';
 
 type CartLayoutProps = {
   children: React.ReactNode;
@@ -6,7 +7,10 @@ type CartLayoutProps = {
 
 const CartLayout = ({children}: CartLayoutProps) => {
   return (
-    <div>{children}</div>
+    <div>
+      <NavHeader/>
+      {children}
+    </div>
   )
 }
 
