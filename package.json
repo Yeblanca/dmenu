@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npx generate && next build",
     "start": "next start",
     "lint": "next lint",
-    "db:pull": "dotenv -e .env.local -- npx prisma db pull"
+    "db:pull": "dotenv -e .env.local -- npx prisma db pull",
+    "postinstall": "npx prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.14.0",

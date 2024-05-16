@@ -4,9 +4,6 @@
     {
       "src": "package.json",
       "use": "@vercel/node",
-      "env": {
-        "DATABASE_URL": "postgresql://dynamicmenu:screen-korea-blue-rag@ec2-3-144-74-105.us-east-2.compute.amazonaws.com:5432/dynamic-menu?schema=public"
-      },
       "command": "npm run build && npm run prisma:generate"
     }
   ],
