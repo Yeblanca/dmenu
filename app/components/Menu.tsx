@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { getItems, getMenuItemsByName, itemsByCategory } from '../lib/items'
+import { itemsByCategory } from '../lib/items'
 import { CategoryBar } from './CategoryBar'
 import { Grid } from './Grid'
 import { Card } from './Card'
@@ -15,7 +15,10 @@ type MenuProps = {
 
 const Menu = ({items}: MenuProps) => {
   const [selectedCategory, setSelectedCategory] = useState(0)
+  const [query, setQuery] = useState('');
   const dispatch = useDispatch<AppDispatch>()
+
+  const filteredItems = items[selectedCategory].MenuItem.filter((item) => item.name.toLowerCase().includes(query.toLowerCase()));
 
   useEffect(() => {
     // Load products into the store
@@ -30,18 +33,33 @@ const Menu = ({items}: MenuProps) => {
 
   return (
     <>
-      <CategoryBar categories={items.map((item) => item.name)} setSelectedCategory={setSelectedCategory} selectedCategory={selectedCategory} />
+  <CategoryBar
+    categories={items.map((item) => item.name)}
+    setSelectedCategory={setSelectedCategory}
+    selectedCategory={selectedCategory}
+  />
       <div className="content">
-        {items[selectedCategory].MenuItem.length === 0 ? (<div>We are sorry, no items were found</div>) : (      <Grid>
-        {items[selectedCategory].MenuItem.map((item) => {
-          return (
-            <Card key={item.id} {...item} />
-          )
-        })}
-      </Grid>)}
-
-      </div>
-    </>
+    <input
+      type="text"
+      value={query}
+      onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search for items"
+          className="search"
+    />
+    {filteredItems.length === 0 && items[selectedCategory].MenuItem.length === 0 ? (
+      <div>We are sorry, no items were found</div>
+    ) : (
+      <>
+        <Grid>
+  {filteredItems.length > 0
+  ? filteredItems.map((item) => <Card key={item.id} {...item} />)
+  : items[selectedCategory].MenuItem.map((item) => <Card key={item.id} {...item} />)
+  }
+        </Grid>
+      </>
+    )}
+  </div>
+</>
   )
 }
 

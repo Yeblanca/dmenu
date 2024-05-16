@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 // TO-DO GET CORRECT TYPE OF ITEMS.
 type InitialState = {
@@ -26,7 +26,7 @@ export const cart = createSlice({
       if (foundItem) {
         foundItem.quantity++;
       } else {
-        state.value.items.push({ product, quantity: 1});
+        state.value.items.push({ product, quantity: 1 });
       }
     },
     updateQuantity: (state, action: PayloadAction<{ id: string, quantity: number }>) => {
@@ -35,9 +35,36 @@ export const cart = createSlice({
       if (foundItem) {
         foundItem.quantity = quantity;
       }
+    },
+    removeFromCart: (state, action: PayloadAction<string>) => {
+      const id = action.payload;
+      state.value.items = state.value.items.filter((item) => item.product.id !== id);
+
     }
   }
 })
 
-export const { addToCart, updateQuantity } = cart.actions;
+export const { addToCart, updateQuantity, removeFromCart } = cart.actions;
 export default cart.reducer;
+
+export const getQuantity = createSelector(
+  (state) => state.cart.value.items,
+  (items) => {
+    let total = 0;
+    for (let product of items) {
+      total += product.quantity;
+    }
+    return total;
+  }
+);
+
+export const getTotalPrice = createSelector(
+  (state) => state.cart.value.items,
+  (items) => {
+    let total = 0;
+    for (let product of items) {
+      total += product.quantity * product.product.price;
+    }
+    return total.toFixed(2);
+  }
+);
