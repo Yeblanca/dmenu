@@ -1,20 +1,16 @@
 {
   "version": 2,
   "builds": [
-    { "src": "package.json", "use": "@vercel/node" }
+    {
+      "src": "package.json",
+      "use": "@vercel/node",
+      "env": {
+        "DATABASE_URL": "postgresql://dynamicmenu:screen-korea-blue-rag@ec2-3-144-74-105.us-east-2.compute.amazonaws.com:5432/dynamic-menu?schema=public"
+      },
+      "command": "npm run build && npm run prisma:generate"
+    }
   ],
   "env": {
     "PRISMA_TELEMETRY_DISABLED": "true"
-  },
-  "build": {
-    "env": {
-      "DATABASE_URL": "postgresql://dynamicmenu:screen-korea-blue-rag@ec2-3-144-74-105.us-east-2.compute.amazonaws.com:5432/dynamic-menu?schema=public"
-    },
-    "commands": {
-      "build": "npm run build",
-      "install": "npm install",
-      "postinstall": "prisma generate"
-    },
-    "use": "@vercel/node"
   }
 }
