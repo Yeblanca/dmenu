@@ -8,7 +8,7 @@ type ItemLayoutProps = {
 
 const ItemLayout = ({children}: ItemLayoutProps) => {
   return (
-    <div>
+    <div className="details-container">
       <NavHeader/>
       {children}
     </div>
