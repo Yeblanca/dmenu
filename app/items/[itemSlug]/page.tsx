@@ -16,7 +16,7 @@ const ItemDetailsPage = async ({ params }: ItemDetailsPageProps) => {
   if(!item) {
     notFound();
   }
-  console.log('this is the item',item)
+  // console.log('this is the item',item)
   return (
     <div className="main">
       <section className="details">

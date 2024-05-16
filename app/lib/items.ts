@@ -38,6 +38,19 @@ export const getMenuItemsByName = async (name: string) => {
         mode: 'insensitive', // This makes the search case-insensitive
       },
       },
+          select: {
+      id: true,
+      name: true,
+      description: true,
+      price: true,
+      slug: true,
+      ItemDetail: {
+        select: {
+          type: true,
+          url: true,
+        },
+      },
+    },
       orderBy: {
         id: 'asc',
       }

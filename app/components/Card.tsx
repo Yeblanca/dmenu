@@ -28,7 +28,7 @@ export const Card = ({ id, name, description, price, slug, ItemDetail }: item) =
     <div className="card">
       <div className="image">
 
-      {ItemDetail.length > 0 ? <Image
+      {ItemDetail&&ItemDetail.length > 0 ? <Image
           src={`${process.env.NEXT_PUBLIC_IMAGE_HOST}/${ItemDetail[0].url}`}
           style={{ objectFit: 'cover' }}
             alt={name}

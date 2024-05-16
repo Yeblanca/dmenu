@@ -5,7 +5,7 @@ import { CategoryBar } from './CategoryBar'
 import { Grid } from './Grid'
 import { Card } from './Card'
 import { useDispatch } from 'react-redux'
-import { AppDispatch } from '@/state/store'
+import { AppDispatch, useAppSelector } from '@/state/store'
 import { receiveProducts } from '@/state/productsSlice'
 
 
@@ -13,12 +13,14 @@ type MenuProps = {
   items: itemsByCategory[]
 }
 
-const Menu = ({items}: MenuProps) => {
+const Menu = ({ items }: MenuProps) => {
+  // console.log(items)
   const [selectedCategory, setSelectedCategory] = useState(0)
   const [query, setQuery] = useState('');
   const dispatch = useDispatch<AppDispatch>()
+  const allItems: itemsByCategory[] = useAppSelector((state) => state.products.value.products) // Add type annotation to allItems array
 
-  const filteredItems = items[selectedCategory].MenuItem.filter((item) => item.name.toLowerCase().includes(query.toLowerCase()));
+  const filteredItems = allItems.filter((item) => item.name.toLowerCase().includes(query.toLowerCase()));
 
   useEffect(() => {
     // Load products into the store
@@ -51,7 +53,7 @@ const Menu = ({items}: MenuProps) => {
     ) : (
       <>
         <Grid>
-  {filteredItems.length > 0
+  {(query.trim().length>0&&filteredItems.length > 0)
   ? filteredItems.map((item) => <Card key={item.id} {...item} />)
   : items[selectedCategory].MenuItem.map((item) => <Card key={item.id} {...item} />)
   }
