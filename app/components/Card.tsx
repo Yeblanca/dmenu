@@ -20,11 +20,6 @@ type item = {
 }
 
 export const Card = ({ id, name, description, price, slug, ItemDetail }: item) => {
-  const dispatch = useDispatch<AppDispatch>();
-  console.log(ItemDetail)
-  const handleClick = () => {
-    dispatch(addToCart({ id, name, description, price, slug, ItemDetail }))
-  }
   return (
     <div className="card">
       <div className="image">
@@ -42,7 +37,6 @@ export const Card = ({ id, name, description, price, slug, ItemDetail }: item) =
         <div className="action-row">
           <h2>{formatPrice(price)}</h2>
           <Button title="Add to cart" item={{ id, name, description, price, slug, ItemDetail }} />
-        {/* <button onClick={handleClick}>Add to cart</button> */}
         </div>
       </div>
     </div>
