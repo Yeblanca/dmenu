@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
 import videojs from 'video.js';
-import Player from "video.js/dist/types/player";
+import Player from 'video.js/dist/types/player';
 import 'video.js/dist/video-js.css';
 
 interface VideoPlayerProps {
@@ -14,15 +14,9 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ options, onReady }) =>
   const playerRef = useRef<Player | null>(null);
 
   useEffect(() => {
-    // Make sure Video.js player is only initialized once
     if (!playerRef.current) {
-      // The Video.js player needs to be _inside_ the component el for React 18 Strict Mode.
       const videoElement = document.createElement('video-js');
-
-      // videoElement.classList.add('vjs-big-play-centered');
-      if (videoRef.current) {
-        videoRef.current.appendChild(videoElement);
-      }
+      videoRef.current?.appendChild(videoElement);
 
       const player = playerRef.current = videojs(videoElement, options, () => {
         videojs.log('player is ready');
@@ -31,25 +25,36 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ options, onReady }) =>
         }
       });
 
-      // You could update an existing player in the `else` block here
-      // on prop change, for example:
+      const playVideo = () => player.play();
+      const pauseVideo = () => player.pause();
+
+      const videos = document.querySelectorAll('video');
+      videos.forEach(video => {
+      video.addEventListener('mouseenter',() => { playVideo(); console.log('mouse enter') });
+});
+
+      // document.querySelectorAll('').addEventListener('mouseenter', () => { playVideo(); console.log('mouse enter') });
+      videoElement.addEventListener('mouseleave', pauseVideo);
+      videoElement.addEventListener('touchstart', playVideo);
+
+      return () => {
+        videoElement.removeEventListener('mouseenter', playVideo);
+        videoElement.removeEventListener('mouseleave', pauseVideo);
+        videoElement.removeEventListener('touchstart', playVideo);
+      };
     } else {
       const player = playerRef.current;
-
-      player.autoplay(options.autoplay);
-      player.src(options.sources);
+      player?.autoplay(options.autoplay);
+      player?.src(options.sources);
     }
-  }, [options, onReady, videoRef]);
+  }, [options, onReady]);
 
-  // Dispose the Video.js player when the functional component unmounts
   useEffect(() => {
     const player = playerRef.current;
 
     return () => {
-      if (player && !player.isDisposed()) {
-        player.dispose();
-        playerRef.current = null;
-      }
+      player?.dispose();
+      playerRef.current = null;
     };
   }, []);
 
