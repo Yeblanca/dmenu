@@ -28,24 +28,14 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ options, onReady }) =>
       const playVideo = () => player.play();
       const pauseVideo = () => player.pause();
 
-      const videos = document.querySelectorAll('video');
-      videos.forEach(video => {
-      video.addEventListener('mouseenter',() => { playVideo(); console.log('mouse enter') });
-});
+      const video = videoRef.current?.querySelector('video');
+      console.log(video);
+      if (video) {
+        video.addEventListener('mouseenter', playVideo)
+        video.addEventListener('mouseleave', pauseVideo);
+        video.addEventListener('touchstart', playVideo);
+      }
 
-      // document.querySelectorAll('').addEventListener('mouseenter', () => { playVideo(); console.log('mouse enter') });
-      videoElement.addEventListener('mouseleave', pauseVideo);
-      videoElement.addEventListener('touchstart', playVideo);
-
-      return () => {
-        videoElement.removeEventListener('mouseenter', playVideo);
-        videoElement.removeEventListener('mouseleave', pauseVideo);
-        videoElement.removeEventListener('touchstart', playVideo);
-      };
-    } else {
-      const player = playerRef.current;
-      player?.autoplay(options.autoplay);
-      player?.src(options.sources);
     }
   }, [options, onReady]);
 

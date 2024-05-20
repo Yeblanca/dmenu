@@ -22,8 +22,8 @@ export const Card: React.FC<Item> = ({ id, name, description, price, slug, ItemD
   const playerRef = useRef<Player | null>(null);
 
   const videoJsOptions = useMemo(() => ({
-    autoplay: true,
-    controls: true,
+    autoplay: false,
+    controls: false,
     responsive: true,
     fluid: true,
     preload: 'auto',
